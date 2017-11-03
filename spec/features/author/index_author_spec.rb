@@ -13,4 +13,10 @@ describe "Author detail page", type: :feature do
     expect(page.text).to match(/alan turing/i)
   end
 
+  it "should have a link to new author" do
+    visit authors_path
+
+    expect(page).to have_link('Add author')
+  end
+
 end
