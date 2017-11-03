@@ -3,6 +3,10 @@ class PapersController < ApplicationController
     @papers = Paper.all
   end
 
+  def show
+    @paper = Paper.find(params[:id])
+  end
+
   def new
     @paper = Paper.new
   end
@@ -31,8 +35,11 @@ class PapersController < ApplicationController
     end
   end
 
-  def show
+  def destroy
     @paper = Paper.find(params[:id])
+    @paper.destroy
+
+    redirect_to papers_path
   end
 
   private

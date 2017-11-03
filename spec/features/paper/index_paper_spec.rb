@@ -44,10 +44,10 @@ describe 'Paper index page', type: :feature do
     FactoryGirl.create :paper
     visit papers_path
 
-    expect(paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).not_to be_nil
+    expect(Paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).not_to be_nil
 
     click_link('Destroy')
 
-    expect(paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
+    expect(Paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
   end
 end
