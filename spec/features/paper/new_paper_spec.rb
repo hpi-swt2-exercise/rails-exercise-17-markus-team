@@ -19,10 +19,10 @@ describe 'New Paper page', type: :feature do
     fill_in 'paper_venue', with: 'Mind 49: 433-460'
     fill_in 'paper_year', with: '1950'
 
-    expect(Paper.find_by_first_name('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
+    expect(Paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
 
     find('input[type="submit"]').click
 
-    expect(Paper.find_by_first_name('COMPUTING MACHINERY AND INTELLIGENCE')).not_to be_nil
+    expect(Paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).not_to be_nil
   end
 end
