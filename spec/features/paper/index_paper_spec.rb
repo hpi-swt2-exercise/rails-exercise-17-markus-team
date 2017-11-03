@@ -32,22 +32,22 @@ describe 'Paper index page', type: :feature do
 
     expect(page).to have_link('Edit')
   end
-#
-#  it 'should have a link to destroy paper' do
-#    FactoryGirl.create :paper
-#    visit papers_path
-#
-#    expect(page).to have_link('Destroy')
-#  end
-#
-#  it 'should actually remove the paper' do
-#    FactoryGirl.create :paper
-#    visit papers_path
-#
-#    expect(paper.find_by_first_name('Alan')).not_to be_nil
-#
-#    click_link('Destroy')
-#
-#    expect(paper.find_by_first_name('Alan')).to be_nil
-#  end
+
+  it 'should have a link to destroy paper' do
+    FactoryGirl.create :paper
+    visit papers_path
+
+    expect(page).to have_link('Destroy')
+  end
+
+  it 'should actually remove the paper' do
+    FactoryGirl.create :paper
+    visit papers_path
+
+    expect(paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).not_to be_nil
+
+    click_link('Destroy')
+
+    expect(paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
+  end
 end
