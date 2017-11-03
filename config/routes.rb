@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  get 'papers/new'
+
   get 'authors/new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :authors
+  resources :authors, :papers
 
   root 'home#index'
  
