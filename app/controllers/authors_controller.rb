@@ -3,5 +3,5 @@ class AuthorsController < ApplicationController
   end
   def create
     render plain: params[:author].inspect
-  end
+  endgit
 end
