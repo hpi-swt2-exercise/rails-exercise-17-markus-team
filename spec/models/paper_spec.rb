@@ -14,4 +14,10 @@ describe 'Paper Object', type: :model do
     paper = Paper.new(title: '', venue: 'Mind 49: 433-460', year:1950)
     expect(paper).not_to be_valid
   end
+
+
+  it 'should not be able to create an paper without venue' do
+    paper = Paper.new(title: 'COMPUTING MACHINERY AND INTELLIGENCE', venue: '', year:1950)
+    expect(paper).not_to be_valid
+  end
 end
