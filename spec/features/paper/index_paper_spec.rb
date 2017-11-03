@@ -12,13 +12,12 @@ describe 'Paper index page', type: :feature do
     expect(page.text).to match(/COMPUTING MACHINERY AND INTELLIGENCE/i)
   end
 
-#  it 'should have a link to new author' do
-#    FactoryGirl.create :author
-#    visit authors_path
-#
-#    expect(page).to have_link('Add author')
-#    expect(page).to have_link('Show')
-#  end
+  it 'should have a link to new paper' do
+    FactoryGirl.create :paper
+    visit papers_path
+
+    expect(page).to have_link('Add paper')
+  end
 #
 #  it 'should have a link to show author' do
 #    FactoryGirl.create :author
