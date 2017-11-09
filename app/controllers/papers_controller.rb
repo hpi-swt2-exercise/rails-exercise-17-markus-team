@@ -1,6 +1,7 @@
 class PapersController < ApplicationController
   def index
     @papers = Paper.all
+    @papers = @papers.published_in(params[:year]) if params[:year]
   end
 
   def show
@@ -24,15 +25,8 @@ class PapersController < ApplicationController
     end
   end
 
-
   def update
     @paper = Paper.find(params[:id])
-
-    ids = params.require(:paper)[:author_ids]
-    @paper.authors = []
-    ids.each do |id|
-      @paper.authors << Author.find(id) unless id.to_s.blank?
-    end
 
     if @paper.update(paper_params)
       redirect_to @paper
@@ -50,6 +44,6 @@ class PapersController < ApplicationController
 
   private
   def paper_params
-    params.require(:paper).permit(:title, :venue, :year)
+    params.require(:paper).permit(:title, :venue, :year, author_ids: [])
   end
 end
