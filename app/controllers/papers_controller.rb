@@ -28,6 +28,12 @@ class PapersController < ApplicationController
   def update
     @paper = Paper.find(params[:id])
 
+    ids = params.require(:paper)[:author_ids]
+    @paper.authors = []
+    ids.each do |id|
+      @paper.authors << Author.find(id) unless id.to_s.blank?
+    end
+
     if @paper.update(paper_params)
       redirect_to @paper
     else

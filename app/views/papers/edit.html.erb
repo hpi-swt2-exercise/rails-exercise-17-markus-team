@@ -31,6 +31,14 @@
     </p>
 
     <p>
+      <% for i in 1..5 do%>
+          <% (istr = i.to_s) %>
+          <%= f.label ('Author ' + istr), for: ('paper_author_id_' + istr) %>
+          <%= f.collection_select(:author_ids, Author.all, :id, :name, {selected: @paper.author_ids[i - 1], include_blank: '(none)'}, {name: 'paper[author_ids][]', id: ('paper_author_id_' + istr)}) %>
+      <% end %>
+    </p>
+
+    <p>
       <%= f.submit %>
     </p>
 <% end %>
