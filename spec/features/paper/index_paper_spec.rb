@@ -50,4 +50,15 @@ describe 'Paper index page', type: :feature do
 
     expect(Paper.find_by_title('COMPUTING MACHINERY AND INTELLIGENCE')).to be_nil
   end
+
+  it 'should allow to filter by year' do
+    paper = FactoryGirl.create :paper
+    visit papers_path(year: paper.year)
+
+    expect(page.text).to have_text(paper.title)
+
+    visit papers_path(year: (paper.year + 1))
+
+    expect(page.text).to_not have_text(paper.title)
+  end
 end
